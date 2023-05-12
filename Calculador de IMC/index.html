@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--font-family: 'Roboto', sans-serif;-->
+    <link rel="stylesheet" href="./style.css">
+
+    
+    <!--<script src="./modal.js" defer></script>-->  <!--caso esteja usando a DOM é interessante colocar aqui em cima esse link ai e add o "defer"-->
+    <script src="./js/script.js" defer type="module"></script>
+</head>
+<body>
+    
+    <div class="alert-error">
+        Digite somente números
+    </div>
+
+
+    <div class="caixinha">
+        <main class="card">
+            <form action="">
+
+                <h1 class="title">Cálculo de IMC</h1>
+
+                <div class="input-wrapper">
+                    <label for="weight">Peso (kg)</label>  <!--ele vai selecionar o input por causa do for ali com o msm id-->
+                    <input id="weight" type="text" placeholder="60"/>
+                </div>
+
+
+                <div class="input-wrapper">
+                    <label for="height">Altura (cm)</label>
+                    <input id="height" type="text" placeholder="165"/>
+                </div>
+
+
+                <button type="submit">
+                    Calcular IMC
+                    <img src="./assets/seta.svg" alt="Seta apontando para direita">  <!--estou pegando ela de dentro da pasta-->
+                </button>
+
+
+            </form>
+        </main>
+    </div>
+
+
+    <div class="modal-wrapper"><!--wrapper-embrulho (como se fosse um cobertour) -->
+        <div class="modal card">
+            
+            
+            
+            <h2 class="title">
+                <button class="close">
+                    <img src="./assets/close.svg" alt="imagem para fechar o popup">
+                </button>
+
+                <span> IMC é de 28 </span>
+            </h2>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

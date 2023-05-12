@@ -1,0 +1,242 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    font-size: 62.5%; /*ele vai fazer com que os calculos semelhantes aos rem que eu usar, vai estar parecido com os pixels*/
+
+    /*cores (tx - Texto)*/
+    --tx-heading: #0C3440;
+    
+    --tx-label: #00453A; /*os textos que estão em cima do input*/
+
+    --bk--input: #DCE2E9; /*cor de fundo do input*/
+    --tx-input: #212529;
+    --ot-input: #02799D; /*linha que tem no input quando clicar nele*/
+    --bd-input: rgba(73, 80, 87, 0.3); /*borda do input*/
+    --tx-placeholder: rgba(73, 80, 87, 0.5); /*cor das intruções que fica dentro do input (como"digite aqui") kkkk*/
+    
+    --tx-button: #FFFFFF; /*cor do texto que tem no botão*/
+    --bk-button: #02799D; /*cor de fundo do botão*/
+    --bk-button-houver: #045770;
+
+
+    --bg-error: #F03E3E;
+    --tx-error: white;
+
+
+
+}
+
+
+body{
+
+    font-family: 'Roboto', sans-serif;
+    background: #040924;
+}
+
+body, input, button{
+    font-size: 1.6rem;
+    line-height: 2rem;
+}
+
+.caixinha{
+    height: 100vh; /*ele vai pegar toda a tela*/
+    display: grid;
+    place-content: center; /*ele vai manter as mesmas propriedades do card mais bem ao centro*/
+
+}
+.card{
+    padding: 4.8rem 6.4rem 6.4rem;
+    background: white;
+    max-width: 42.8rem ;  /*largura maxima dele (428px)*/
+    margin-inline: auto;
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+    border-radius: .6rem;
+}
+
+.title{
+    font-size: 3.2rem;
+    line-height: 4rem;
+    color: var(--tx-heading);
+}
+
+
+/*
+.caixinha{
+    padding: 1.6rem;
+}
+*/
+
+form{
+    width: 30rem; /*largura da caixinha (pros itens nn ficarem tão apertado/ achatados)*/
+}
+
+
+form h1{
+    margin-bottom: 3.2rem;
+}
+
+form label{
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: var(--tx-label);
+    margin-bottom: .8rem;
+    display: block; /*tive que colocar isso pois o label tem um display inline e não aceita margin bottom*/
+}
+form input{
+    width: 100%; /*quebra da linha*/
+    border: 1px solid var(--bd-input);
+    background: var(--bk--input);
+    padding: 1.6rem;
+    border-radius: .4rem;
+
+}
+
+
+
+form input:focus{
+    outline: 2px solid var(--ot-input);
+
+}
+form input::placeholder{
+    color: var(--tx-placeholder);
+}
+
+/*espaçamento entre eles*/
+.input-wrapper + .input-wrapper{ /*ele ta aplicando só no segundo input "ele vai pegar o input-wrapper que tem anterior á ele outro input-wrapper" */
+    margin-top: 1.6rem;
+
+}
+
+
+
+form button{
+
+    margin-top: 3.2rem;
+    padding: 1.6rem;
+    width: 100%;
+
+    border-radius: .4rem;
+    border: none;
+    background: var(--bk-button);
+    color: var(--tx-button);
+
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+
+
+
+    font-weight: bold;
+    font-size: 1.6rem;
+    /*line-height: 2rem;*/
+
+    cursor: pointer;  /*para ficar uma mãozinha quando passa o mouse*/
+    transition: background .3s;  /*para quando eu passar o mouse ele trocar a cor devagar (não coloca no button:hover)*/
+}
+
+form button:hover{
+    background: var(--bk-button-houver);
+}
+
+
+
+
+
+
+
+
+
+/*modal (normalmente são essas caixinhas que ficam sobrepostas/ pop up)*/
+
+.modal-wrapper.open{
+    opacity: 1;
+    visibility: visible;
+}
+.modal-wrapper{
+    position: absolute; /*pois eu quero uma nova camada que fique por cima de tudo*/
+    inset: 0;
+    /* inset:0  é o mesmo que
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    */
+    background: rgba(0, 0, 0, 0.7);
+
+
+        display: grid; /*se deixar só isso ele vai esticar*/
+        place-content: center; /*como tem esse ele vai ficar bem ao meio*/
+
+
+
+        opacity: 0;
+        visibility: hidden;
+}
+
+
+.modal{
+    position: relative;
+}
+.modal button{
+    background: none;
+    border: none;
+
+
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+
+    cursor: pointer;
+
+    transition: transform .3s;
+}
+
+
+.modal button:hover{
+    transform: scale(1.1); /*para ele aumentar o tamanho do X*/
+
+}
+
+
+
+
+
+/* alert error */
+.alert-error.open{
+    visibility: visible;
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.alert-error{
+    position: absolute;
+    background-color: var(--bg-error);
+    top: 0;
+    left: 0;
+    right: 0;
+    
+
+    text-align: center;
+    color: var(--tx-error);
+    padding: .8rem 0;  /*0 nas laterais pois nesse caso nn importa (ele já tem mais msm assim coloquei)*/
+    font-weight: bold;
+
+
+    /*
+    font-size: 1.6rem;
+    line-height: 2rem;
+    */
+
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: transform .5s;
+}
